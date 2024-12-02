@@ -16,3 +16,5 @@ jobs:
               run: npm run lint
             - name: Run tests
               run: npm test
+            - name: Generate coverage report
+              uses: ArtiomTr/jest-coverage-report-action@v2
