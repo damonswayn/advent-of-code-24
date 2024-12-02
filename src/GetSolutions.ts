@@ -1,6 +1,10 @@
 import path from 'node:path';
 import fs from 'node:fs';
 
+interface ImportedSolutionModule {
+  default: () => string
+}
+
 // load solutions directory path
 const SOLUTIONS_DIR = path.resolve(__dirname);
 
@@ -12,11 +16,18 @@ const solutions = fs.readdirSync(SOLUTIONS_DIR)
 solutions.forEach((solutionPath) => {
   const solutionDir = path.resolve(SOLUTIONS_DIR, solutionPath);
   const solutionFiles = fs.readdirSync(solutionDir);
-  if (solutionFiles.includes('solve.ts')) {
-    import(path.resolve(solutionDir, 'solve.ts')).then((module) => {
+  runSolution(solutionFiles, solutionDir, solutionPath);
+});
+
+function runSolution(solutionFiles: string[], solutionDir: string, solutionPath: string): void {
+  const directoryContainsSolutionFile = solutionFiles.includes('solve.ts');
+  if (directoryContainsSolutionFile) {
+    import(path.resolve(solutionDir, 'solve.ts')).then((module: ImportedSolutionModule): void => {
       console.log(`Solution for ${solutionPath} is ${module.default()}`);
+    }).catch((err: unknown): void => {
+      console.error(`Error loading solution for ${solutionPath}: ${(err as Error).message}`);
     });
   } else {
     console.log(`No solve.ts found in ${solutionPath}`);
   }
-});
+}

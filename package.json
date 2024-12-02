@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "solutions": "ts-node src/GetSolutions.ts"
   },
   "keywords": [],
