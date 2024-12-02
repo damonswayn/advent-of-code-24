@@ -2,15 +2,17 @@ name: Advent of Code 2024 CI
 on: [push]
 jobs:
     test:
-        - name: Check out repository code
-          uses: actions/checkout@v4
-        - name: set up node/typescript
-          uses: actions/setup-node@v4
-          with:
-            node-version: 20
-        - name: Install dependencies
-          run: npm install
-        - name: Run lint
-          run: npm run lint
-        - name: Run tests
-          run: npm test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v4
+            - name: set up node/typescript
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: Install dependencies
+              run: npm install
+            - name: Run lint
+              run: npm run lint
+            - name: Run tests
+              run: npm test
