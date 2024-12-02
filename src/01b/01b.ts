@@ -19,7 +19,7 @@ function findOccurences(arr: number[], val: number): number {
   return arr.filter((v) => v === val).length;
 }
 
-function calculateOccurencesList(listA: number[], listB: number[]) {
+function calculateOccurencesList(listA: number[], listB: number[]): number[] {
   const occurencesList = [];
 
   for (const a of listA) {

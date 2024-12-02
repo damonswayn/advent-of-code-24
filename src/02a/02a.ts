@@ -1,7 +1,7 @@
 import { TestInput } from "../lib/TestInput";
 
 export function solve(input: TestInput): string {
-    return input.reduce((acc, val) => {
+    return input.reduce((acc, val): number => {
         const line = val.splitNumbersWhitespace();
         if (isValidList(line)) {
             return acc + 1;

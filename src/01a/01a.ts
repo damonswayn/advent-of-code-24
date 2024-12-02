@@ -25,7 +25,7 @@ export function generateLists(input: TestInput): [number[], number[]] {
   }, [[], []]);
 }
 
-function calculateDistanceList(sortedA: number[], sortedB: number[]) {
+function calculateDistanceList(sortedA: number[], sortedB: number[]): number[] {
   const distList = [];
 
   for (let i = 0; i < sortedA.length; i++) {
