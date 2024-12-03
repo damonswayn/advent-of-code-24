@@ -7,5 +7,3 @@ export default function run(): string {
   const input = TestInput.fromFile(PROBLEM_INPUT);
   return solve(input);
 }
-
-console.log(run());
