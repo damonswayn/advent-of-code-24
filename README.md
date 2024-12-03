@@ -13,7 +13,7 @@ npm test
 To generate solutions for the puzzles, use the following command:
 
 ```bash
-npm run solve
+npm run solutions
 ```
 
 This will run each `solve.ts` file for each folder in the `src`
