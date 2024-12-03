@@ -31,6 +31,10 @@ export class TestInput {
   public lines(): TestInputLine[] {
     return this.rawLines().map((line) => new TestInputLine(line));
   }
+
+  public getContent(): string {
+    return this.content;
+  }
 }
 
 export class TestInputLine {
