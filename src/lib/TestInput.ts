@@ -35,6 +35,10 @@ export class TestInput {
   public getContent(): string {
     return this.content;
   }
+
+  public asMultiDimensionalArray(): string[][] {
+    return this.rawLines().map((line) => line.split(''));
+  }
 }
 
 export class TestInputLine {
