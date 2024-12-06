@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "format": "prettier --write src/**/*.ts",
     "solutions": "ts-node src/GetSolutions.ts",
     "generate": "./make_src_dir.sh"
