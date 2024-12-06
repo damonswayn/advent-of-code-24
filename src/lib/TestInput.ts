@@ -33,7 +33,7 @@ export class TestInput {
         );
     }
 
-    public forEach(fn: (line: TestInputLine) => void): void {
+    public forEach(fn: (line: TestInputLine, index: number) => void): void {
         this.lines().forEach(fn);
     }
 
