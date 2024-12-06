@@ -6,7 +6,8 @@
     "test": "jest",
     "lint": "eslint src",
     "format": "prettier --write src/**/*.ts",
-    "solutions": "ts-node src/GetSolutions.ts"
+    "solutions": "ts-node src/GetSolutions.ts",
+    "generate": "./make_src_dir.sh"
   },
   "keywords": [],
   "author": "",
