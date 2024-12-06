@@ -65,7 +65,7 @@ class Map {
     private numberOfSteps: number;
 
     public static fromInput(input: TestInput): Map {
-        let map: MapSquare[][] = [];
+        const map: (MapSquare[] | undefined)[] = [];
 
         input.forEach((line: TestInputLine, y: number) => {
             line.split('').forEach((char: string, x: number) => {
@@ -77,7 +77,7 @@ class Map {
             });
         });
 
-        return new Map(map);
+        return new Map(map as MapSquare[][]);
     }
 
     constructor(map: MapSquare[][]) {
@@ -154,7 +154,7 @@ class Map {
     }
 
     public clone(): Map {
-        let map: MapSquare[][] = [];
+        const map: (MapSquare[] | undefined)[] = [];
 
         this.map.forEach((row: MapSquare[], y: number) => {
             row.forEach((square: MapSquare, x: number) => {
@@ -166,7 +166,7 @@ class Map {
             });
         });
 
-        return new Map(map);
+        return new Map(map as MapSquare[][]);
     }
 
     public makeSquareImpassable(x: number, y: number): void {
@@ -178,7 +178,7 @@ enum Direction {
     UP,
     RIGHT,
     DOWN,
-    LEFT
+    LEFT,
 }
 
 class Guard {
@@ -205,7 +205,7 @@ class Guard {
     }
 
     public getPositionAsString(): string {
-        return `${this.x},${this.y}`;
+        return `${this.x.toString()},${this.y.toString()}`;
     }
 
     public move(direction: Direction): void {
@@ -271,6 +271,7 @@ export function solve(input: TestInput): string {
 
             try {
                 while (map.tick()) {
+                    // do nothing
                 }
             } catch (e) {
                 if ((e as Error).message === 'Infinite loop detected') {

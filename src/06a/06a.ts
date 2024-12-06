@@ -57,7 +57,7 @@ class Map {
     private numberOfSteps: number;
 
     public static fromInput(input: TestInput): Map {
-        let map: MapSquare[][] = [];
+        const map: (MapSquare[] | undefined)[] = [];
 
         input.forEach((line: TestInputLine, y: number) => {
             line.split('').forEach((char: string, x: number) => {
@@ -69,7 +69,7 @@ class Map {
             });
         });
 
-        return new Map(map);
+        return new Map(map as MapSquare[][]);
     }
 
     constructor(map: MapSquare[][]) {
@@ -142,7 +142,7 @@ enum Direction {
     UP,
     RIGHT,
     DOWN,
-    LEFT
+    LEFT,
 }
 
 class Guard {
@@ -169,7 +169,7 @@ class Guard {
     }
 
     public getPositionAsString(): string {
-        return `${this.x},${this.y}`;
+        return `${this.x.toString()},${this.y.toString()}`;
     }
 
     public move(direction: Direction): void {
@@ -219,6 +219,7 @@ export function solve(input: TestInput): string {
     const map = Map.fromInput(input);
 
     while (map.tick()) {
+        // do nothing
     }
 
     return map.getNumberOfVisitedSquares().toString();
