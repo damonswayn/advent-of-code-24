@@ -69,6 +69,14 @@ export class TestInputLine {
         return this.content.split(separator, limit);
     }
 
+    public splitPerCharacter(): string[] {
+        return this.split('');
+    }
+
+    public splitPerCharacterNumbers(): number[] {
+        return this.splitPerCharacter().map(Number);
+    }
+
     public splitWhitespace(): string[] {
         return this.split(/\s+/);
     }
