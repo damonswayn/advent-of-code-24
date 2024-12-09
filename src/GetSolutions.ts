@@ -5,6 +5,10 @@ interface ImportedSolutionModule {
     default: () => string;
 }
 
+const slowList: string[] = [
+    '06b',
+];
+
 // load solutions directory path
 const SOLUTIONS_DIR = path.resolve(__dirname);
 
@@ -20,6 +24,12 @@ solutions.forEach((solutionPath) => {
 
 function runSolution(solutionFiles: string[], solutionDir: string, solutionPath: string): void {
     const directoryContainsSolutionFile = solutionFiles.includes('solve.ts');
+    if (slowList.includes(solutionPath)) {
+        console.log(`Skipping slow solution ${solutionPath}`);
+        console.log();
+        return;
+    }
+
     if (directoryContainsSolutionFile) {
         import(path.resolve(solutionDir, 'solve.ts'))
             .then((module: ImportedSolutionModule): void => {

@@ -86,7 +86,8 @@ The template for the day directory is located in `.template`.
 | 06b | ✅      | ✅         |
 | 07a | ✅      | ✅         |
 | 07b | ✅      | ✅         |
-| 08  |        |           |
+| 08a | ✅      | ✅         |
+| 08b | ✅      | ✅         |
 | 09  |        |           |
 | 10  |        |           |
 | 11  |        |           |
