@@ -3,7 +3,7 @@ import path from 'node:path';
 import { RULES_LIST, solve } from './11a';
 import { RulesEngine } from '../lib/RulesEngine';
 
-describe('Day 11, Problem A', () => {
+describe('Day Eleven, Problem A', () => {
     const TEST_INPUT_FILE = path.resolve(__dirname, 'test.txt');
     const testInput = TestInput.fromFile(TEST_INPUT_FILE);
 
