@@ -53,8 +53,12 @@ export class TestInput {
         return this.rawLines().map((line) => line.split(''));
     }
 
-    public asNewlineSeperatedChunks(): TestInput[] {
-        return this.content.split('\n\n').map((chunk) => new TestInput(chunk));
+    public batchByParagraph(): TestInput[] {
+        return this.batch('\n\n');
+    }
+
+    public batch(seperator: string): TestInput[] {
+        return this.content.split(seperator).map((chunk) => new TestInput(chunk));
     }
 }
 

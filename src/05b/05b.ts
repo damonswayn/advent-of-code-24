@@ -2,7 +2,7 @@ import { TestInput } from '../lib/TestInput';
 import Tuple from '../lib/Tuple';
 
 export function solve(input: TestInput): string {
-    const chunks = input.asNewlineSeperatedChunks();
+    const chunks = input.batchByParagraph();
     const dependencyList = chunks[0];
     const printQueueLists = chunks[1];
     const printQueueArrays = printQueueLists.map((line) => line.splitNumbers(','));
