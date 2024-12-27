@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
 export class TestInput {
-    private content: string;
+    private readonly content: string;
 
     public static fromFile(fileName: string, encoding: BufferEncoding = 'utf8'): TestInput {
         const data = fs.readFileSync(fileName, encoding);
@@ -63,7 +63,7 @@ export class TestInput {
 }
 
 export class TestInputLine {
-    private content: string;
+    private readonly content: string;
 
     constructor(content: string) {
         this.content = content;
@@ -95,5 +95,9 @@ export class TestInputLine {
 
     public getContent(): string {
         return this.content;
+    }
+
+    public regexMatch(regex: RegExp): RegExpMatchArray | null {
+        return this.content.match(regex);
     }
 }

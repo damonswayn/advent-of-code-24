@@ -1,3 +1,60 @@
+export interface SimplePoint2D {
+    x: number;
+    y: number;
+}
+
+export interface SimplePoint3D {
+    x: number;
+    y: number;
+    z: number;
+}
+
+export function addSimplePoint2D(a: SimplePoint2D, b: SimplePoint2D): SimplePoint2D {
+    return { x: a.x + b.x, y: a.y + b.y };
+}
+
+export function addSimplePoint3D(a: SimplePoint3D, b: SimplePoint3D): SimplePoint3D {
+    return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
+}
+
+export function addSimplePoint2DWithWrapping(
+    a: SimplePoint2D,
+    b: SimplePoint2D,
+    width: number,
+    height: number,
+): SimplePoint2D {
+    return { x: (a.x + b.x + width) % width, y: (a.y + b.y + height) % height };
+}
+
+export function addSimplePoint3DWithWrapping(
+    a: SimplePoint3D,
+    b: SimplePoint3D,
+    width: number,
+    height: number,
+    depth: number,
+): SimplePoint3D {
+    return { x: (a.x + b.x + width) % width, y: (a.y + b.y + height) % height, z: (a.z + b.z + depth) % depth };
+}
+
+export function subtractSimplePoint2DWithWrapping(
+    a: SimplePoint2D,
+    b: SimplePoint2D,
+    width: number,
+    height: number,
+): SimplePoint2D {
+    return { x: (a.x - b.x + width) % width, y: (a.y - b.y + height) % height };
+}
+
+export function subtractSimplePoint3DWithWrapping(
+    a: SimplePoint3D,
+    b: SimplePoint3D,
+    width: number,
+    height: number,
+    depth: number,
+): SimplePoint3D {
+    return { x: (a.x - b.x + width) % width, y: (a.y - b.y + height) % height, z: (a.z - b.z + depth) % depth };
+}
+
 export class Point2D {
     public x: number;
     public y: number;
@@ -97,5 +154,57 @@ export class Point3D {
 
     public clone(): Point3D {
         return new Point3D(this.x, this.y, this.z);
+    }
+}
+
+export class Velocity2D {
+    public velocity: Point2D;
+
+    constructor(velocity: Point2D) {
+        this.velocity = velocity;
+    }
+
+    public manhattanLength(): number {
+        return this.velocity.manhattanLength();
+    }
+
+    public manhattanLengthTo(other: Velocity2D): number {
+        return this.velocity.manhattanLengthTo(other.velocity);
+    }
+
+    public equals(other: Velocity2D): boolean {
+        return this.velocity.equals(other.velocity);
+    }
+
+    public clone(): Velocity2D {
+        return new Velocity2D(this.velocity.clone());
+    }
+
+    public add(other: Velocity2D): Velocity2D {
+        return new Velocity2D(this.velocity.add(other.velocity));
+    }
+
+    public subtract(other: Velocity2D): Velocity2D {
+        return new Velocity2D(this.velocity.subtract(other.velocity));
+    }
+
+    public multiply(factor: number): Velocity2D {
+        return new Velocity2D(this.velocity.multiply(factor));
+    }
+
+    public divide(divisor: number): Velocity2D {
+        return new Velocity2D(this.velocity.divide(divisor));
+    }
+
+    public rotateRight(): Velocity2D {
+        return new Velocity2D(this.velocity.rotateRight());
+    }
+
+    public rotateLeft(): Velocity2D {
+        return new Velocity2D(this.velocity.rotateLeft());
+    }
+
+    public manhattanDistanceTo(other: Velocity2D): number {
+        return this.velocity.manhattanDistanceTo(other.velocity);
     }
 }
